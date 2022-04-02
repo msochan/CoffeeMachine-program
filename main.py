@@ -33,7 +33,7 @@ resources = {
 money_inside_machine = 0
 
 
-def print_report():
+def print_raport():
     print("Resources available:")
     print(f" Water: {resources['water']}ml")
     print(f" Milk: {resources['milk']}ml")
@@ -51,10 +51,10 @@ def check_resources(coffee_ingredients):
 
 def process_coins():
     print("Please insert coins")
-    quarters = float(input("How many quarters: "))
-    dimes = float(input("How many dimes: "))
-    nickles = float(input("How many nickles: "))
-    pennies = float(input("How many pennies: "))
+    quarters = float(input("How many quarters - $0.25: "))
+    dimes = float(input("How many dimes - $0.1: "))
+    nickles = float(input("How many nickles - $0.05: "))
+    pennies = float(input("How many pennies - $0.01: "))
     return quarters * 0.25 + dimes * 0.1 + nickles * 0.05 + pennies * 0.01
 
 
@@ -85,12 +85,15 @@ def make_coffee(coffee_type):
 def game_loop():
     is_continue = True
     while is_continue:
-        choose = (input("What would you like? (espresso/latte/cappuccino): ")).lower()
+        print("- Type 'off' to turn the machine off;")
+        print("- Type 'raport' to show the available resources;")
+        choose = (
+            input("What would you like to buy (espresso $1.5/latte $2/cappuccino $3)? Type espresso, latte or cappuccino: ")).lower()
         if choose == "off":
             is_continue = False
             print("Machine turning off...")
-        elif choose == "report":
-            print_report()
+        elif choose == "raport":
+            print_raport()
         elif choose == "espresso":
             make_coffee(choose)
         elif choose == "latte":
